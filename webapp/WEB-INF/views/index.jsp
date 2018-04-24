@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,5 +10,15 @@
 </head>
 <body>
 	<h1>hello spring 헬로 스프링</h1>
+
+	<table>
+		<c:forEach items="${userList}" var="userVo">
+			<tr>
+				<td>${userVo.age }</td>
+				<!-- userVo.age ==> getAge()로 찾는거 -->
+				<td>${userVo.name }</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

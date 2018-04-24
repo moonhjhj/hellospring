@@ -1,9 +1,13 @@
 package com.javaex.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,4 +73,26 @@ public class HelloController {
 		
 		return "";
 	}
+	
+	
+	@RequestMapping(value = "/userlist", method = RequestMethod.GET)
+	public String list(Model model) {
+		//Model은 원래 담는거 model은 내가 정한 이름
+		
+		List<UserVo> userList = new ArrayList<UserVo>();
+		UserVo user01 = new UserVo(11, "강다니엘");
+		UserVo user02 = new UserVo(22, "옹성우");
+		UserVo user03 = new UserVo(33, "박우진");
+		
+		userList.add(user01);
+		userList.add(user02);
+		userList.add(user03);
+		System.out.println(userList.toString());
+		
+		
+		model.addAttribute("userList", userList);
+		//model에 userList랑 return값 담겨서 감.
+		return "/WEB-INF/views/index.jsp";
+	}
+	
 }
